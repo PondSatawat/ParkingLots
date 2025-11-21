@@ -62,31 +62,51 @@ async function updateDashboardData() {
   occupiedSpotsEl.textContent = occupiedCount + " ช่อง";
 }
 
-//
-// 🚀 (เพิ่ม) 5. ฟังก์ชันใหม่ (สำหรับ Firestore)
-//
+// 🚀 (แก้ไข) 5. ฟังก์ชันสำหรับ Firestore (นับทั้งเข้าและออก โดยใช้ Timestamp)
 async function updateUsageStats() {
-  if (!usersTodayEl) return; // (ถ้าไม่เจอ = ไม่ได้อยู่หน้า Dashboard)
+  if (!usersTodayEl) return; 
 
   try {
-    // (สร้าง) วันที่ปัจจุบัน "YYYY-MM-DD"
-    const todayString = new Date().toISOString().split('T')[0];
-    
-    // (Query) ค้นหาใน 'ParkingLogs' ที่ "CheckInDate" == "วันนี้"
     const logRef = collection(db, "ParkingLogs");
-    const q = query(logRef, where("CheckInDate", "==", todayString));
     
-    const querySnapshot = await getDocs(q);
+    // 1. สร้างตัวแปรเวลา "เริ่มต้นวัน" (00:00:00) และ "จบวัน" (23:59:59)
+    const startOfDay = new Date();
+    startOfDay.setHours(0, 0, 0, 0);
+    
+    const endOfDay = new Date();
+    endOfDay.setHours(23, 59, 59, 999);
 
-    // (นับ) จำนวนเอกสารที่เจอ
-    const usersTodayCount = querySnapshot.size;
+    // Query 1: คนที่ "เข้า" วันนี้ (เช็คว่า CheckInTime อยู่ระหว่างต้นวันกับจบวัน)
+    const qIn = query(logRef, 
+      where("CheckInTime", ">=", startOfDay),
+      where("CheckInTime", "<=", endOfDay)
+    );
+    
+    // Query 2: คนที่ "ออก" วันนี้ (เช็คว่า CheckOutTime อยู่ระหว่างต้นวันกับจบวัน)
+    const qOut = query(logRef, 
+      where("CheckOutTime", ">=", startOfDay),
+      where("CheckOutTime", "<=", endOfDay)
+    );
+    
+    // ดึงข้อมูลพร้อมกัน
+    const [snapIn, snapOut] = await Promise.all([
+      getDocs(qIn),
+      getDocs(qOut)
+    ]);
 
-    // (อัปเดต) Card
-    usersTodayEl.textContent = usersTodayCount + " คน";
+    // ใช้ Set เพื่อนับจำนวนคน (ไม่ซ้ำ)
+    const uniqueUsers = new Set();
+
+    snapIn.forEach(doc => uniqueUsers.add(doc.id));
+    snapOut.forEach(doc => uniqueUsers.add(doc.id));
+
+    // แสดงผล
+    console.log(`In: ${snapIn.size}, Out: ${snapOut.size}, Unique: ${uniqueUsers.size}`); // (Debug ดูค่าใน Console)
+    usersTodayEl.textContent = uniqueUsers.size + " คน";
 
   } catch (error) {
     console.error("Error fetching usage stats:", error);
-    usersTodayEl.textContent = "Error";
+    usersTodayEl.textContent = "-"; 
   }
 }
 
