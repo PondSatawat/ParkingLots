@@ -39,3 +39,16 @@
     a:hover {
       text-decoration: underline;
     }
+
+    @media screen and (max-width: 768px) {
+  .container {
+    width: 90%; /* ให้กว้าง 90% ของจอมือถือ */
+    padding: 20px;
+    margin: 0 auto; /* จัดกึ่งกลาง */
+  }
+  
+  input, button {
+    width: 100%; /* เต็มความกว้าง container */
+    box-sizing: border-box; /* รวม padding ในความกว้าง */
+  }
+}

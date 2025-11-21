@@ -464,3 +464,107 @@ main.content tr:hover {
 .slot.offline {
   background-color: #95a5a6;
 }
+
+/* =========================================
+   MOBILE RESPONSIVE (เฉพาะหน้าจอมือถือ)
+   ========================================= */
+@media screen and (max-width: 768px) {
+
+  /* --- 1. จัด Navbar ให้เป็นแนวตั้ง --- */
+  .navbar {
+    flex-direction: column;
+    padding: 10px;
+    height: auto; /* ปล่อยความสูงอิสระ */
+  }
+
+  .navbar .logo {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    text-align: center;
+    display: flex;
+    gap: 5px; /* ระยะห่างระหว่างเมนู */
+  }
+
+  .nav-links li {
+    margin: 5px 0;
+    width: 100%;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1); /* พื้นหลังจางๆ ให้กดง่ายขึ้น */
+    border-radius: 5px;
+  }
+
+  .user-info {
+    margin-top: 15px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* --- 2. จัด Layout เนื้อหาหลัก --- */
+  .content {
+    padding: 15px; /* ลด Padding ด้านข้าง */
+    margin-top: 10px;
+  }
+
+  /* --- 3. ปรับ Dashboard Cards (เรียงลงมาแนวตั้ง) --- */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr; /* 1 คอลัมน์เต็มจอ */
+    gap: 15px;
+  }
+
+  .card {
+    width: 100%; /* เต็มความกว้าง */
+    box-sizing: border-box; /* ไม่ให้ Padding ดันจนล้น */
+  }
+
+  /* --- 4. ปรับตาราง (Table) ให้เลื่อนซ้ายขวาได้ --- */
+  /* เนื่องจากตารางมีหลายคอลัมน์ จะย่อให้พอดีจอมือถือไม่ได้ ต้องให้เลื่อนเอา */
+  table {
+    display: block;
+    overflow-x: auto; /* ให้เลื่อนแนวนอนได้ */
+    white-space: nowrap; /* ห้ามตัดคำ เพื่อให้ตารางสวยเหมือนเดิม */
+    width: 100%;
+  }
+
+  /* --- 5. หน้า Home (ปุ่มและสถานะ) --- */
+  #not-parked-state input, 
+  #not-parked-state button,
+  #parked-state button {
+    width: 100%; /* ปุ่มและช่องกรอกเต็มจอ */
+    max-width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .logo-img {
+    width: 150px; /* ลดขนาดโลโก้กลางจอ */
+  }
+
+  /* --- 6. หน้า Parking Grid (จัด 2 คอลัมน์พอ) --- */
+  .parking-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 ช่องต่อแถว */
+    gap: 10px;
+  }
+  
+  /* --- 7. Modal จ่ายเงิน --- */
+  .modal-content {
+    width: 90%; /* ไม่ fix pixel แต่ใช้ % แทน */
+    margin: 20% auto; /* จัดกึ่งกลางแนวตั้ง */
+  }
+  
+  .modal-content img {
+    max-width: 100%; /* รูป QR Code ย่อตามจอ */
+    height: auto;
+  }
+}
