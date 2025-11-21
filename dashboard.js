@@ -3,12 +3,31 @@ import { signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-firestore.js";
 
 const userNameDisplay = document.getElementById("userName");
-const logoutBtn = document.querySelector(".logout-btn"); // (แก้) หาจาก class
-
-// 👇 (1. เพิ่ม) หาลิงก์ User Management
+const logoutBtn = document.querySelector(".logout-btn"); // หาจาก class
 const userManagementNav = document.getElementById("user-management-nav");
 
-// 👇 (2. เพิ่ม) ซ่อนลิงก์ไว้ก่อนเป็นค่าเริ่มต้น
+// 👇 (เพิ่มใหม่) ส่วนจัดการ Hamburger Menu อัตโนมัติ
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.querySelector("nav.navbar");
+  const navLinks = document.querySelector(".nav-links");
+
+  // สร้างปุ่ม Hamburger ถ้ายังไม่มี
+  if (navbar && !document.querySelector(".hamburger")) {
+    const hamburger = document.createElement("div");
+    hamburger.className = "hamburger";
+    hamburger.innerHTML = "☰"; // ไอคอนสามขีด
+    
+    // ใส่ปุ่มเข้าไปใน Navbar
+    navbar.appendChild(hamburger);
+
+    // สั่งให้คลิกแล้วเปิด/ปิดเมนู
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("mobile-show");
+    });
+  }
+});
+
+// ซ่อนลิงก์ User Management ไว้ก่อน
 if (userManagementNav) {
   userManagementNav.style.display = "none";
 }
@@ -25,39 +44,33 @@ onAuthStateChanged(auth, async (user) => {
         userNameDisplay.textContent = userData.email + " (" + userData.role + ")";
       }
       
-      // 👇 (3. เพิ่ม) Logic ซ่อน/แสดงลิงก์
+      // Logic ซ่อน/แสดงลิงก์ Admin
       if (userData.role === "admin") {
-        // ถ้าเป็น Admin ให้ "แสดง"
         if (userManagementNav) {
-          userManagementNav.style.display = "list-item"; // (หรือ 'inline-block' ขึ้นอยู่กับ CSS ของ .nav-links)
+          userManagementNav.style.display = "list-item"; 
         }
       } else {
-        // ถ้าเป็น User ทั่วไป ให้ "ซ่อน" (ซึ่งซ่อนอยู่แล้ว แต่กันเหนียว)
         if (userManagementNav) {
           userManagementNav.style.display = "none";
         }
       }
 
-      // 👇 (4. เพิ่ม) Logic ป้องกันการเข้าหน้าโดยตรง
-      // (เช็กว่าเรากำลังอยู่ที่หน้า user.html หรือไม่)
+      // Logic ป้องกันการเข้าหน้าโดยตรง
       if (window.location.pathname.includes("user.html")) {
-        // ถ้า "ใช่" และ User "ไม่ใช่" Admin
         if (userData.role !== "admin") {
-          // เตะกลับไปหน้า Home
           alert("You do not have permission to access this page.");
           window.location.href = "home.html";
         }
       }
     }
   } else {
-    // (Redirect ถ้าไม่ล็อกอิน)
+    // Redirect ถ้าไม่ล็อกอิน
     if (!window.location.pathname.includes("index.html") && !window.location.pathname.includes("register.html")) {
       window.location.href = "index.html";
     }
   }
 });
 
-// (โค้ด Logout เหมือนเดิม)
 if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
     await signOut(auth);
