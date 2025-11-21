@@ -98,5 +98,5 @@ document.addEventListener("DOMContentLoaded", () => {
   updateParkingGrid(); // 👈 (โหลดครั้งแรก)
   
   // (สั่งให้โหลดใหม่ทุก 5 วินาที (Polling))
-  setInterval(updateParkingGrid, 500);
+  setInterval(updateParkingGrid,1000);
 });
