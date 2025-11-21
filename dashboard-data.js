@@ -114,9 +114,9 @@ async function updateUsageStats() {
 document.addEventListener("DOMContentLoaded", () => {
   // (Blynk)
   updateDashboardData(); 
-  setInterval(updateDashboardData, 500); // (Blynk โหลดทุก 5 วิ)
+  setInterval(updateDashboardData, 60000); // (Blynk โหลดทุก 5 วิ)
 
   // (Firestore)
   updateUsageStats();
-  setInterval(updateUsageStats, 1000); // (Firestore โหลดทุก 1 นาที (ประหยัด))
+  setInterval(updateUsageStats, 60000); // (Firestore โหลดทุก 1 นาที (ประหยัด))
 });
