@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Home | UTCC Smart Parking Lot</title>
+  
+  <link rel="stylesheet" href="dashboard.css">
+  
+  <script type="module" src="home.js" defer></script>
+  <script type="module" src="dashboard.js" defer></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">UTCC Smart Parking Lot</div>
+    <ul class="nav-links">
+      <li><a href="home.html" class="active">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="parking-status.html">Parking Info</a></li>
+      <li id="user-management-nav"><a href="user.html">User Management</a></li>
+      <li><a href="myhistory.html">My History</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="user-info">
+      <span>Welcome, <span class="user-name" id="userName">กำลังโหลด...</span></span>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <main class="content">
+
+    <img src="/image/download.png" alt="UTCC Logo" class="logo-img">
+
+    <p id="loading-status" class="hidden">กำลังตรวจสอบสถานะการจอดรถ...</p>
+
+    <div id="not-parked-state" class="show">
+      <h3>กรุณากรอกเลขทะเบียนด้านล่าง</h3>
+      <input type="text" id="licenseInput" placeholder="เช่น กข7175">
+      <br>
+      <button id="checkInBtn">เข้า</button>
+      <p id="checkin-message" class="message"></p>
+    </div>
+
+    <div id="parked-state" class="hidden">
+      <h3><p>เลขทะเบียน: <b id="parked-license"></b></p></h3>
+      <p id="parked-time" style="font-size: 1.2em;">
+        </p>
+      
+      <div id="price-display" class="hidden" style="font-size: 1.2em; color: #dc3545; margin: 15px 0;">
+        <strong>ยอดชำระ: <span id="final-price"></span> บาท</strong>
+      </div>
+      <br>
+      <button id="checkOutBtn">ออก</button>
+      <p id="checkout-message" class="message"></p>
+    </div>
+
+    <div id="payment-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h3>สแกนเพื่อชำระเงิน</h3>
+      <p>ยอดชำระทั้งหมด: <b id="modal-price">...</b> บาท</p>
+      
+      <img src="/image/promptpay.png" alt="PromptPay QR Code" style="width: 200px; height: 200px; margin: 15px auto; border: 1px solid #ddd; background-color: #eee;">
+      
+      <p style="margin-top: 15px;">(นี่คือ PromptPay สำหรับโครงงานเท่านั้น)</p>
+      
+      <button id="confirmPaymentBtn">
+        ✅ โอนเงินเรียบร้อย (กดยืนยันเพื่อเปิดประตู)
+      </button>
+      <button id="cancelPaymentBtn" class="btn-secondary">
+        ยกเลิก
+      </button>
+    </div>
+  </div>
+
+  </main>
+
+  <footer>
+    © 2025 UTCC Smart Parking Lot | All rights reserved.
+  </footer>
+
+</body>
+</html>

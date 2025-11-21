@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management - UTCC Smart Parking Lot</title>
+  <link rel="stylesheet" href="dashboard.css">
+  <script type="module" src="dashboard.js" defer></script>
+  <script type="module" src="user.js" defer></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">UTCC Smart Parking Lot</div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="parking-status.html">Parking Info</a></li>
+      <li><a href="user.html" class="active">User Management</a></li>
+      <li><a href="myhistory.html">My History</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="user-info">
+      <span>Welcome, <span class="user-name" id="userName">กำลังโหลด...</span></span>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <main class="content">
+    <table>
+      <thead>
+        <tr>
+          <th>รหัสการเข้า</th>
+          <th>ชื่อผู้ใช้</th>
+          <th>เวลาเข้า</th>
+          <th>เวลาออก</th>
+          <th>สถานะ</th>
+          <th>รวมเวลาจอด (ชั่วโมง)</th>
+          <th>เงินที่ชำระ (บาท)</th>
+        </tr>
+      </thead>
+      
+      <tbody id="logs-table-body">
+        </tbody>
+    </table>
+
+  </main>
+
+  <footer>
+    © 2025 UTCC Smart Parking Lot | All rights reserved.
+  </footer>
+
+</body>
+</html>

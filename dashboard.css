@@ -1,0 +1,466 @@
+/*
+ * ============================================
+ * ไฟล์: dashboard.css (อัปเดต)
+ * ============================================
+ */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(to right, #83a4d4, #b6fbff);
+    
+    /* (แก้ไข) เปลี่ยนเป็น Flexbox เพื่อจัดหน้า */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column; 
+}
+
+/* --- (ส่วน Navbar เหมือนเดิม) --- */
+nav.navbar { /* (เปลี่ยนชื่อ nav เป็น nav.navbar เพื่อไม่ให้ชน) */
+    background: #2c3e50;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+nav.navbar h1,
+nav.navbar .logo {
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+nav.navbar .user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto; /* (แก้ไข) ย้ายไปด้านขวา */
+}
+
+.user-name {
+    font-weight: bold;
+    color: #f1c40f;
+}
+
+.logout-btn {
+    background: #e74c3c;
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.logout-btn:hover {
+    background: #c0392b;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    gap: 25px;
+    margin: 0;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+    transition: color 0.2s;
+}
+
+.nav-links li a:hover,
+.nav-links li a.active { /* (เพิ่ม) สไตล์สำหรับ active */
+    color: #f1c40f;
+    font-weight: bold;
+}
+
+/* --- (ส่วน Content แก้ไข) --- */
+main.content {
+    color: #2c3e50;
+    
+    /* (แก้ไข) ใช้ Flexbox จัดเนื้อหาตรงกลาง */
+    flex: 1; /* <-- ทำให้มันขยายเต็มพื้นที่ที่เหลือ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* <-- จัดกลางแนวตั้ง */
+    align-items: center;   /* <-- จัดกลางแนวนอน */
+    text-align: center;
+    padding: 20px; /* (เพิ่ม) ระยะห่างเล็กน้อย */
+}
+
+/* --- (ส่วน Footer แก้ไข) --- */
+footer {
+    width: 100%;
+    text-align: center;
+    color: #bdc3c7;;
+    font-size: 14px;
+    padding: 15px; /* (แก้ไข) */
+    background: #2c3e50;; /* (เพิ่ม) พื้นหลังเล็กน้อย */
+}
+
+
+/* ============================================= */
+/* (เพิ่มใหม่) Styles for Home Page (Image Look) */
+/* ============================================= */
+.content .logo-img {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 25px;
+}
+
+.content h3 {
+    font-size: 1.4em;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* (เพิ่ม) ซ่อน class ที่ไม่ต้องการ */
+.hidden {
+    display: none;
+}
+
+/* (เพิ่ม) สไตล์ปุ่มและ Input ให้เหมือนในภาพ */
+.content #licenseInput {
+    width: 100%;
+    max-width: 300px;
+    padding: 15px;
+    font-size: 1.2em;
+    border-radius: 30px; /* <-- ทำให้มน */
+    border: 1px solid #ccc;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content #checkInBtn,
+.content #checkOutBtn {
+    padding: 12px 20px;
+    font-size: 1.1em;
+    border-radius: 30px; /* <-- ทำให้มน */
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    font-weight: bold;
+    min-width: 150px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.content #checkInBtn {
+    background-color: #28a745; 
+    color: white;
+}
+.content #checkInBtn:hover {
+    background-color: #218838;
+}
+
+.content #checkOutBtn {
+    background-color: #dc3545; 
+    color: white;
+}
+.content #checkOutBtn:hover {
+    background-color: #c82333;
+}
+
+/* (เพิ่ม) สไตล์ข้อความตอนจอด */
+.content #parked-state p {
+    font-size: 1.3em;
+    margin: 10px 0;
+}
+.content #parked-time b {
+    font-size: 1.5em;
+    color: #000;
+}
+
+/*
+ * =============================================
+ * (เพิ่มใหม่) Styles for Payment Modal
+ * =============================================
+ */
+
+.modal-overlay {
+  position: fixed; /* <-- อยู่ทับทุกอย่าง */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* <-- พื้นหลังมืด */
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 25px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  width: 90%;
+  max-width: 400px;
+}
+
+.modal-content h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* (จุดแสดง QR) */
+#payment-qrcode {
+  width: 200px; /* <-- ขนาด QR Code */
+  height: 200px;
+  margin: 20px auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+#payment-qrcode img {
+  width: 100% !important; /* <-- บังคับให้ QR Code พอดีกรอบ */
+  height: 100% !important;
+}
+
+/* (ปุ่มใน Modal) */
+#confirmPaymentBtn,
+#cancelPaymentBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+#confirmPaymentBtn {
+  background-color: #28a745;
+  color: white;
+}
+#confirmPaymentBtn:hover {
+  background-color: #218838;
+}
+
+#cancelPaymentBtn.btn-secondary {
+  background-color: #ccc;
+  color: #333;
+}
+#cancelPaymentBtn.btn-secondary:hover {
+  background-color: #bbb;
+}
+
+/*
+ * =============================================
+ * (เพิ่มใหม่) Styles for Admin Tables & Buttons
+ * =============================================
+ */
+
+/* (สไตล์สำหรับปุ่ม "รายงานสมาชิก" และ "ข้อมูลโปรโมชั่น") */
+.button-group {
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+.button-group button {
+  background-color: #3498db;
+  border: none;
+  color: white;
+  padding: 10px 18px;
+  margin: 5px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 500;
+  font-size: 1em; /* (ปรับขนาด font) */
+}
+
+.button-group button:hover {
+  background-color: #2980b9;
+}
+
+/* (สไตล์สำหรับตาราง "รายงานการเข้า-ออก") */
+main.content table {
+  width: 90%; /* (ปรับความกว้าง) */
+  max-width: 1200px; /* (กำหนดความกว้างสูงสุด) */
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden; /* (จำเป็นสำหรับขอบมน) */
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+main.content th,
+main.content td {
+  padding: 12px 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+main.content th {
+  background-color: #34495e; /* (สีหัวตาราง) */
+  color: white;
+  font-weight: bold;
+}
+
+/* (เพิ่ม) ทำให้ตารางอ่านง่ายขึ้น (ลายสลับ) */
+main.content tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+main.content tr:hover {
+  background-color: #f1f1f1;
+}
+
+/*
+ * =============================================
+ * (เพิ่มใหม่) Styles for Parking Status Page
+ * =============================================
+ */
+
+.parking-grid {
+  display: grid;
+  /* (ปรับ) ให้เป็น 5 คอลัมน์ (เพื่อให้พอดีกับ A1-A5) */
+  grid-template-columns: repeat(4, 120px); 
+  gap: 20px;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.slot {
+  width: 120px;
+  height: 100px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.slot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* (สีเขียวสำหรับช่องว่าง) */
+.slot.available { 
+  background-color: #27ae60; 
+} 
+
+/* (สีแดงสำหรับช่องจอดแล้ว) */
+.slot.occupied { 
+  background-color: #e74c3c; 
+}
+
+/*
+ * =============================================
+ * (แก้ไข) Styles for Dashboard Cards
+ * =============================================
+ */
+
+.cards {
+  display: grid;
+  /* (แก้ไข) ให้เป็น 2 คอลัมน์ (บน-ล่าง) */
+  grid-template-columns: repeat(2, minmax(300px, 1fr)); /* 👈 (แก้ตรงนี้) */
+  gap: 40px; /* 👈 (เพิ่มช่องว่างระหว่างการ์ด) */
+  justify-items: center;
+  width: 90%;
+  max-width: 1000px; /* 👈 (ขยายความกว้างสูงสุด) */
+  margin: 50px auto; /* 👈 (ปรับ margin ให้ลงมาตรงกลางมากขึ้น) */
+}
+
+.card {
+  width: 100%; 
+  background: white;
+  padding: 40px; /* 👈 (เพิ่ม padding ให้ใหญ่ขึ้น) */
+  border-radius: 15px; /* 👈 (ปรับขอบมนเล็กน้อย) */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25); /* 👈 (เงาเข้มขึ้น) */
+  transition: transform 0.2s;
+  text-align: center; /* 👈 (จัดข้อความกลาง) */
+}
+
+.card:hover {
+  transform: translateY(-8px); /* 👈 (เด้งขึ้นเยอะขึ้น) */
+}
+
+.card h3 {
+  color: #34495e;
+  font-size: 1.4em; /* 👈 (ขยายขนาดหัวข้อ) */
+  margin-bottom: 15px; /* 👈 (เพิ่มระยะห่าง) */
+}
+
+.card p {
+  font-size: 36px; /* 👈 (ขยายขนาดตัวเลข) */
+  font-weight: bold;
+  color: #2980b9;
+  margin-top: 15px; /* 👈 (เพิ่มระยะห่าง) */
+}
+
+/*
+ * =============================================
+ * (เพิ่มใหม่) Styles for Parking Status Page
+ * =============================================
+ */
+
+.parking-grid {
+  display: grid;
+  /* (แก้ไข) ให้เป็น 4 คอลัมน์ (ตามที่คุณขอ) */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 20px;
+  justify-content: center;
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 600px; /* (ปรับขนาดตามความเหมาะสม) */
+}
+
+.slot {
+  /* ... (สไตล์ .slot เดิม เหมือนเดิม) ... */
+  width: 100%; /* (ปรับให้ยืดหยุ่น) */
+  height: 100px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.slot:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* (สีเขียวสำหรับช่องว่าง) */
+.slot.available { 
+  background-color: #27ae60; 
+} 
+
+/* (สีแดงสำหรับช่องจอดแล้ว) */
+.slot.occupied { 
+  background-color: #e74c3c; 
+}
+
+/* (เพิ่ม) สีเทาสำหรับช่องที่ไม่เชื่อมต่อ */
+.slot.offline {
+  background-color: #95a5a6;
+}

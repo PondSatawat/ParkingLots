@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | UTCC Smart Parking Lot</title>
+  
+  <link rel="stylesheet" href="dashboard.css">
+  
+  <script type="module" src="dashboard.js" defer></script>
+  
+  <script type="module" src="dashboard-data.js" defer></script>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">UTCC Smart Parking Lot</div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="dashboard.html" class="active">Dashboard</a></li>
+      <li><a href="parking-status.html">Parking Info</a></li>
+      <li id="user-management-nav"><a href="user.html">User Management</a></li>
+      <li><a href="myhistory.html">My History</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="user-info">
+      <span>Welcome, <span class="user-name" id="userName">กำลังโหลด...</span></span>
+      <button class="logout-btn" id="logoutBtn">Logout</button>
+    </div>
+  </nav>
+
+  <main class="content">
+    
+    <h2>ภาพรวมระบบลานจอดรถ</h2>
+
+    <div class="cards">
+      
+      <div class="card">
+        <h3>จำนวนช่องจอดทั้งหมด</h3>
+        <p id="total-spots-p">8 ช่อง</p> 
+      </div>
+      
+      <div class="card">
+        <h3>ช่องที่ว่างอยู่</h3>
+        <p id="available-spots-p">...</p>
+      </div>
+      
+      <div class="card">
+        <h3>ช่องที่จอดอยู่</h3>
+        <p id="occupied-spots-p">...</p>
+      </div>
+      
+      <div class="card">
+        <h3>จำนวนผู้ใช้งานทั้งหมดของวันนี้</h3>
+        <p id="users-today-p">...</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 UTCC Smart Parking Lot | All rights reserved.
+  </footer>
+
+</body>
+</html>

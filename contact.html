@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact | UTCC Smart Parking Lots</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo">UTCC Smart Parking Lots</div>
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="parking-status.html">Parking Info</a></li>
+      <li id="user-management-nav"><a href="user.html">User Management</a></li>
+      <li><a href="myhistory.html">My History</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <div class="user-info">
+      <span>Welcome, <span class="user-name" id="userName">ผู้ใช้</span></span>
+      <button class="logout-btn">Logout</button>
+    </div>
+  </nav>
+
+  <!-- เนื้อหา -->
+  <main class="content">
+    <h2>ติดต่อเรา</h2>
+    <p>UTCC Smart Parking Lot</p>
+    <p>สาขาวิทยาการคอมพิวเตอร์ มหาวิทยาลัยหอการค้าไทย</p>
+
+    <div style="margin-top:30px;line-height:1.8;">
+      <p>📞 <b>โทรศัพท์:</b> 02-697-6000</p>
+      <p>✉️ <b>อีเมล:</b> smartparking@utcc.ac.th</p>
+      <p>🏫 <b>ที่อยู่:</b> 126/1 ถ.วิภาวดีรังสิต แขวงดินแดง เขตดินแดง กรุงเทพฯ 10400</p>
+    </div>
+
+    <!-- เพิ่มแผนที่ -->
+    <div style="margin:40px auto;max-width:600px;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3258.4795306555716!2d100.5601734665601!3d13.778448754958129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29e9d8144beb9%3A0x66e0f2c1ee23aa2d!2z4Lih4Lir4Liy4Lin4Li04LiX4Lii4Liy4Lil4Lix4Lii4Lir4Lit4LiB4Liy4Lij4LiE4LmJ4Liy4LmE4LiX4Lii!5e0!3m2!1sth!2sth!4v1762313142439!5m2!1sth!2sth" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <p style="margin-top:40px;color:#333;">
+      หากพบปัญหาในการใช้งานระบบ สามารถติดต่อผู้ดูแลได้ผ่านอีเมลด้านบน
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    © 2025 UTCC Smart Parking Lot | All rights reserved.
+  </footer>
+
+  <!-- JS (ถ้าต้องการให้ logout ใช้ได้) -->
+  <script type="module" src="dashboard.js"></script>
+</body>
+</html>
