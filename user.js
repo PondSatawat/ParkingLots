@@ -49,11 +49,13 @@ async function loadParkingLogs() {
       // 4. สร้าง HTML สำหรับ 1 แถว
       htmlRows += `
         <tr>
-          <td>${doc.id.substring(0, 6)}...</td> <td>${log.UserEmail || log.UserID.substring(0, 8)}</td> <td>${checkIn}</td>
-          <td>${checkOut}</td>
-          <td>${log.Status}</td>
-          <td>${totalHours}</td>
-          <td>${log.Cost}</td>
+          <td data-label="รหัสการเข้า">${doc.id.substring(0, 6)}...</td>
+          <td data-label="ชื่อผู้ใช้">${log.UserEmail || log.UserID.substring(0, 8)}</td>
+          <td data-label="เวลาเข้า">${checkIn}</td>
+          <td data-label="เวลาออก">${checkOut}</td>
+          <td data-label="สถานะ">${log.Status}</td>
+          <td data-label="รวมเวลาจอด (ชม.)">${totalHours}</td>
+          <td data-label="เงินที่ชำระ">${log.Cost}</td>
         </tr>
       `;
     });

@@ -57,12 +57,13 @@ async function loadMyHistory(uid) {
       // สร้าง HTML (7 คอลัมน์)
       htmlRows += `
         <tr>
-          <td>${doc.id.substring(0, 6)}...</td>
-          <td>${log.LicensePlate}</td> <td>${checkIn}</td>
-          <td>${checkOut}</td>
-          <td>${log.Status}</td>
-          <td>${totalHours}</td>
-          <td>${log.Cost}</td>
+          <td data-label="รหัสการเข้า">${doc.id.substring(0, 6)}...</td>
+          <td data-label="ป้ายทะเบียน">${log.LicensePlate}</td> 
+          <td data-label="เวลาเข้า">${checkIn}</td>
+          <td data-label="เวลาออก">${checkOut}</td>
+          <td data-label="สถานะ">${log.Status}</td>
+          <td data-label="รวมเวลาจอด (ชม.)">${totalHours}</td>
+          <td data-label="เงินที่ชำระ">${log.Cost}</td>
         </tr>
       `;
     });
