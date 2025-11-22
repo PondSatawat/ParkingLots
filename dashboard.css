@@ -25,6 +25,7 @@ nav.navbar { /* (เปลี่ยนชื่อ nav เป็น nav.navbar �
     background: #2c3e50;
     color: white;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     padding: 15px 40px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
