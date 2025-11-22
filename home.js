@@ -7,7 +7,7 @@ import { collection, addDoc, query, where, getDocs, updateDoc, doc, Timestamp } 
 //
 // 🚀 (เพิ่ม 1) ฟังก์ชันสำหรับส่งคำสั่งไปที่ Blynk API
 //
-const BLYNK_AUTH_TOKEN = "MktnzUmPaI7GUyUH9GEcirfNF3cNT_Q-";
+const BLYNK_AUTH_TOKEN = "qZPLAFyNIzZ2HCX9ZdalhEfD4-llTZDS";
 const BLYNK_SERVER_URL = "https://blynk.cloud/external/api";
 
 async function sendBlynkCommand(virtualPin, value) {
