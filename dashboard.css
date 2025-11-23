@@ -590,46 +590,59 @@ main.content tr:hover {
         left: -9999px;
     }
 
+    table {
+      min-width: 100%;
+    }
     /* 3. จัดรูปแบบ "แถว" ให้เป็น "การ์ด" */
     tr {
         background: white;
-        border-radius: 10px;
-        margin-bottom: 15px; /* ระยะห่างระหว่างการ์ด */
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border-radius: 12px;
+        margin-bottom: 20px; /* ระยะห่างระหว่างการ์ด */
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         border: 1px solid #eee;
-        padding: 10px;
+        padding: 15px;
+        position: relative;
     }
 
     /* 4. จัดรูปแบบ "เซลล์" ข้อมูล */
     td {
         border: none;
-        border-bottom: 1px solid #eee;
+        border-bottom: 1px solid #f0f0f0;
         position: relative;
-        padding-left: 50% !important; /* เว้นที่ด้านซ้ายให้หัวข้อ */
-        text-align: right !important; /* จัดข้อมูลชิดขวา */
-        white-space: normal !important; /* ให้ตัดคำได้ */
-        min-height: 40px;
+        padding: 10px 0 10px 0; /* บน ล่าง */
+        padding-left: 0 !important; /* ลบ padding ซ้ายเดิม */
         display: flex;
+        justify-content: space-between; /* หัวข้อซ้าย ข้อมูลขวา */
         align-items: center;
-        justify-content: flex-end;
+        text-align: right;
+        min-height: auto;
+        font-size: 14px;
+        color: #333;
     }
 
     td:last-child {
         border-bottom: none;
     }
 
-    /* 5. สร้างหัวข้อจำลองด้วย CSS (ใช้ data-label) */
-    td:before {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: 15px;
-        width: 45%;
-        padding-right: 10px;
-        white-space: nowrap;
-        text-align: left;
-        font-weight: bold;
+  td:before {
+        position: static; /* ไม่ใช้ absolute แล้ว */
+        content: attr(data-label);
+        font-weight: 600;
         color: #2c3e50;
-        content: attr(data-label); /* ✨ ดึงข้อความจาก HTML มาแสดง */
+        text-align: left;
+        padding-right: 15px;
+        white-space: nowrap;
+        flex-shrink: 0; /* ห้ามหัวข้อหด */
+        width: auto;
+        max-width: 40%; /* ให้หัวข้อกินที่ได้ไม่เกิน 40% */
+    }
+    
+    /* จัดการข้อมูลยาวๆ */
+    td {
+        word-break: break-word; /* ตัดคำยาวๆ */
+    }
+    
+    tr:nth-child(even) {
+        background-color: white; /* ยกเลิกสีสลับแถวในการ์ด */
     }
 }
