@@ -569,3 +569,67 @@ main.content tr:hover {
     height: auto;
   }
 }
+
+/* ... (โค้ดเดิมด้านบน) ... */
+
+/*
+ * ==================================================================
+ * 📱 Mobile Table (แปลงตารางเป็น Card View)
+ * ==================================================================
+ */
+@media screen and (max-width: 768px) {
+    /* 1. เปลี่ยนการแสดงผลของ Table ทั้งหมด */
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    /* 2. ซ่อนหัวตาราง (Header) */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    /* 3. จัดรูปแบบ "แถว" ให้เป็น "การ์ด" */
+    tr {
+        background: white;
+        border-radius: 10px;
+        margin-bottom: 15px; /* ระยะห่างระหว่างการ์ด */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        border: 1px solid #eee;
+        padding: 10px;
+    }
+
+    /* 4. จัดรูปแบบ "เซลล์" ข้อมูล */
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50% !important; /* เว้นที่ด้านซ้ายให้หัวข้อ */
+        text-align: right !important; /* จัดข้อมูลชิดขวา */
+        white-space: normal !important; /* ให้ตัดคำได้ */
+        min-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    td:last-child {
+        border-bottom: none;
+    }
+
+    /* 5. สร้างหัวข้อจำลองด้วย CSS (ใช้ data-label) */
+    td:before {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 15px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        text-align: left;
+        font-weight: bold;
+        color: #2c3e50;
+        content: attr(data-label); /* ✨ ดึงข้อความจาก HTML มาแสดง */
+    }
+}
