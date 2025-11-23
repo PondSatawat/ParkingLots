@@ -609,11 +609,11 @@ main.content tr:hover {
         border: none;
         border-bottom: 1px solid #f0f0f0;
         position: relative;
-        padding: 10px 0 10px 0; /* บน ล่าง */
-        padding-left: 0 !important; /* ลบ padding ซ้ายเดิม */
-        display: flex;
+        padding: 8px 0; /* ระยะห่างบนล่าง */
+        padding-left: 0 !important;
+        display: flex; /* ✨ ใช้ Flexbox */
         justify-content: space-between; /* หัวข้อซ้าย ข้อมูลขวา */
-        align-items: center;
+        align-items: flex-start; /* ชิดบน (กรณีข้อความยาวหลายบรรทัด) */
         text-align: right;
         min-height: auto;
         font-size: 14px;
@@ -625,21 +625,19 @@ main.content tr:hover {
     }
 
   td:before {
-        position: static; /* ไม่ใช้ absolute แล้ว */
         content: attr(data-label);
         font-weight: 600;
         color: #2c3e50;
         text-align: left;
-        padding-right: 15px;
-        white-space: nowrap;
-        flex-shrink: 0; /* ห้ามหัวข้อหด */
-        width: auto;
-        max-width: 40%; /* ให้หัวข้อกินที่ได้ไม่เกิน 40% */
+        flex: 0 0 40%;
+        padding-right: 10px;
+        white-space: normal; /* ให้หัวข้อยาวๆ ตัดบรรทัดได้ถ้าจำเป็น */
     }
     
     /* จัดการข้อมูลยาวๆ */
     td {
-        word-break: break-word; /* ตัดคำยาวๆ */
+        word-break: break-word;
+        overflow-wrap: break-word;
     }
     
     tr:nth-child(even) {
