@@ -231,7 +231,7 @@ confirmPaymentBtn.addEventListener("click", async () => {
     });
 
     // (B) (แก้ไข) สั่งเปิดประตูทางออก (ยิงไป Blynk V1)
-    await sendBlynkCommand("v1", 90); // (สั่ง V1/Servo2 ให้ไปที่ 90 องศา)
+    await sendBlynkCommand("v1", 0); // (สั่ง V1/Servo2 ให้ไปที่ 90 องศา)
 
     // (C) แสดงข้อความสุดท้าย และปิด Modal (เหมือนเดิม)
     checkoutMessage.textContent = `ชำระ ${calculatedCost} บาทเรียบร้อย ประตูเปิดแล้ว!`;
@@ -244,7 +244,7 @@ confirmPaymentBtn.addEventListener("click", async () => {
     
     // (เพิ่ม) หน่วงเวลา 2 วินาที แล้วสั่ง "ปิด" ประตู
     setTimeout(async () => {
-      await sendBlynkCommand("v1", 0); // (สั่ง V1/Servo2 กลับไป 0 องศา)
+      await sendBlynkCommand("v1", 90); // (สั่ง V1/Servo2 กลับไป 0 องศา)
     }, 7000); // 2 วินาที
     
     // (Timeout เดิมสำหรับรีเฟรชหน้า)
