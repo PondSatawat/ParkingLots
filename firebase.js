@@ -5,12 +5,12 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/12.4.0/firebase
 import { getDatabase } from "https://www.gstatic.com/firebasejs/12.4.0/firebase-database.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCgKTtjGEHyoqZ0cDa5QZMwQe8c0iSEo4w",
+  apiKey: "Your_Key",
   authDomain: "loginparklotconsole.firebaseapp.com",
   projectId: "loginparklotconsole",
   storageBucket: "loginparklotconsole.firebasestorage.app",
-  messagingSenderId: "891919276145",
-  appId: "1:891919276145:web:f6aba59bcfdf21930ba3d0",
+  messagingSenderId: "Your_ID",
+  appId: "Your_AppID",
   databaseURL: "https://loginparklotconsole-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 
