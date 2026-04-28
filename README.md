@@ -1,1 +1,1 @@
-This project for education only no profit
+This project is created purely for educational purposes. It is not intended for commercial use or profit. The goal is to provide a foundation for students, researchers, and developers who wish to explore IoT applications and extend the system in the future just give credit and you can use whatever.
